@@ -167,7 +167,7 @@ public class FrmInicioSesion extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(this, "Bienvenido: " + usuarioEncontrado.getUsername());
 
-        AuditoriaLOG.registrarAuditoria(usuarioEncontrado.getIdUsuario(), "Usuarios", "Inicio sesió");
+        AuditoriaLOG.registrarAuditoria(usuarioEncontrado.getIdUsuario(), "Usuarios", "Inició sesión");
 
         SesionUsuario.getInstance().iniciarSesion(usuarioEncontrado);
         FrmPrincipal frmPrincipal = new FrmPrincipal();

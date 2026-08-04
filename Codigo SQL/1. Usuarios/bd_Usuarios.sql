@@ -1,5 +1,4 @@
-
--- EJECUCION PRIMORDIAL
+-- MODULO 1: SEGURIDAD, AUTENTICACION Y MENU DINAMICO
 USE sistema_clinica_san_gabriel;
 
 CREATE TABLE Usuarios (
@@ -17,34 +16,10 @@ CREATE TABLE Auditorias (
     hora TIME NOT NULL,
     modulo VARCHAR(50) NOT NULL,
     operacion VARCHAR(255) NOT NULL,
-    
-    CONSTRAINT fk_auditoria_usuario 
+    CONSTRAINT fk_auditoria_usuario
         FOREIGN KEY (idUsuario) REFERENCES Usuarios(idUsuario)
         ON DELETE RESTRICT
 );
 
--- FIN DE EJECUCION PRIMORDIAL
-
-
-
--- EJEMPLOS DE INSERCION DE USUARIOS--
-INSERT INTO Usuarios (username, password, rol, estado)
-VALUES ("yordin_cr", "12345678", "Administrador", true);
-
-INSERT INTO Usuarios (username, password, rol, estado)
-VALUES ("teffo", "87654321", "Administrador", true);
-
--- ELIMINAR REGISTROS
-TRUNCATE TABLE Usuarios;
-TRUNCATE TABLE Auditorias;
-
-DROP TABLE Auditorias;
-
--- CONSULTAS
-
 SELECT * FROM Usuarios;
 SELECT * FROM Auditorias;
-
--- BUSQUEDA DE USUARIO POR USERNAME Y PASSWORD
-
-SELECT * FROM Usuarios WHERE (username = "teffo" AND password = "87654321");

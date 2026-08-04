@@ -58,7 +58,18 @@ public class CajaLOG {
             comprobante.setTotal(pago.getMonto());
             comprobante.setIdPago(pagoRegistrado.getIdPago());
 
-            ComprobanteDAO.registrarComprobante(comprobante);
+            boolean comprobanteRegistrado = ComprobanteDAO.registrarComprobante(comprobante);
+            if (comprobanteRegistrado) {
+                try {
+                    AuditoriaLOG.registrarAuditoria(
+                            SesionUsuario.getInstance().getIdUsuario(),
+                            "Caja",
+                            "Emitió el comprobante " + comprobante.getNumeroComprobante()
+                    );
+                } catch (Exception e) {
+                    System.err.println("Error al registrar la auditoría del comprobante: " + e.getMessage());
+                }
+            }
         }
 
         JOptionPane.showMessageDialog(null,

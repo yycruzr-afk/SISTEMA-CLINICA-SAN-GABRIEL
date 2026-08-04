@@ -1,5 +1,5 @@
--- Orden: primero AtencionMedica, luego Pago --
--- Ejecucion primordial --
+-- MODULO 6: CAJA, FACTURACION Y REPORTES - PAGO
+USE sistema_clinica_san_gabriel;
 
 CREATE TABLE IF NOT EXISTS pago (
     id_pago INT AUTO_INCREMENT PRIMARY KEY,
@@ -12,9 +12,4 @@ CREATE TABLE IF NOT EXISTS pago (
         FOREIGN KEY (id_atencion) REFERENCES atenciones_medicas(idAtencion)
 );
 
--- Pagos de prueba
-INSERT INTO pago (id_atencion, fecha_pago, monto, metodo_pago, estado)
-VALUES (1, '2026-07-26', 120.00, 'Efectivo', TRUE);
-
-INSERT INTO pago (id_atencion, fecha_pago, monto, metodo_pago, estado)
-VALUES (2, '2026-07-26', 250.00, 'Tarjeta', TRUE);
+SELECT * FROM pago;
